@@ -26,7 +26,7 @@ function(buttonSelector)
         $(this).keyup(function(e)
         {
             var currentEType = e.target;
-            var parentContainer = $(e.target).parents('.item');
+            var parentContainer = $(e.target).closest('.item');
             var entryTypes = parentContainer.find('.numeric');
 
             //ensure only different values per group
