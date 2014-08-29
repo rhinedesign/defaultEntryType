@@ -1,0 +1,33 @@
+{% extends "_layouts/cp" %}
+
+{% set title = "Default Entry Types"|t %}
+{% includeJsResource "defaultentrytype/js/defaultEntryType.js" %}
+
+{% set tabs = {
+    etypes: { label: "Organization"|t, url: url('defaultentrytype') },
+} %}
+
+{% set content %}
+<em style="max-width: 560px; display: block;">Set your section entry type default order preference. Enter '1' for entry types that you would like to default to the first level of a section, '2' for the second level, and so on. '0' and blank will be ignored.</em>
+<hr>
+{% set sections = craft.sections.getAllSections() %}
+<div id="entrytypeorder">
+{% for section in sections %}
+{% if section.maxLevels %}
+	<div class="item" data-id="{{ section.id }}">
+		<strong style="margin-bottom: 10px; display: block">{{ section }}</strong>
+		{% set entryTypes = section.getEntryTypes() %}
+		<ul>
+		{% for entryType in entryTypes %}
+			<li class="field"><input type="text" value="{{ craft.defaultEntryType.getOrderById(entryType.id) }}" class="text numeric" size="1" name="et-{{ entryType.id }}" data-id="{{ entryType.id }}" style="margin-right: 5px; width: 2.75em">
+			{{ entryType.name }}
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endif %}
+{% endfor %}
+	<hr>
+	<input type="submit" class="btn submit" value="Save" id="entryOrderSubmit">
+</div>
+{% endset %}
