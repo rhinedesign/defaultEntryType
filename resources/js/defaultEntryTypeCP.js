@@ -48,7 +48,17 @@ function switchParent(){
 }
 
 function selectType(response){
-	entryTypeField.find("option:selected").removeAttr("selected");
-	entryTypeField.find('[value="'+response+'"]').attr('selected', 'selected');
-	entryTypeField.attr('disabled', 'disabled').css('background-color', 'rgba(200,200,200,0.4)');
+	entryTypeField.css('background-color', 'rgba(200,200,200,0.4)');
+	var currentEntryTypeID = entryTypeField.find("option:selected").val();
+	console.log(currentEntryTypeID + ', ' + parseInt(response))
+	if(parseInt(currentEntryTypeID) != parseInt(response)){
+		entryTypeField.find("option:selected").removeAttr("selected");
+		entryTypeField.find('[value="'+response+'"]').attr('selected', 'selected');
+		entryTypeField.find("option:not(:selected)").remove();
+		if(!pageId){pageId=""}
+		Craft.postActionRequest('entries/switchEntryType', $('#entry-form').serialize(), function(response){
+			$('#fields').html(response.paneHtml);
+			$(document.body).append(response.footHtml);
+		});
+	}
 }
