@@ -10,4 +10,9 @@ If you assign 0 or leave an input blank for an entrytype, it won't affect that l
 
 The plugin currently does not affect database records of entries; it only auto-selects entrytypes when creating or editing entries in a structure section and disables the dropdown.
 
+__Future / Todo:__
+
+- Don't show an entrytype on an unrestricted level if it has been assigned to another
+- Maybe allow multiple entrytype selections per level?
+
 *Tested on Craft 2.1.2570*
