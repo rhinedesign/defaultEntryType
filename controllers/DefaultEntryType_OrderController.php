@@ -114,7 +114,35 @@ class DefaultEntryType_OrderController extends BaseController
             }
         }
         else{
+            // must be a new, top level page
              $this->returnJson('false');
+        }
+    }
+
+    //use this for new entries at top level
+    public function actionGetTypeBySectionId()
+    {
+        $this->requireAjaxRequest();
+        $id = craft()->request->getPost('id');
+        $entryTypes = craft()->sections->getEntryTypesBySectionId($id);
+        $orderExists = false;
+        foreach($entryTypes as $entryType)
+        {
+            $entryTypeId = $entryType->getAttribute('id');
+            $order = craft()->defaultEntryType_entry->getOrderById($entryTypeId);
+            if($order == '1')
+            {
+                $orderExists = true;
+                break;
+            }
+        }
+        if($entryTypeId && $orderExists)
+        {
+            $this->returnJson($entryTypeId);
+        }
+        else
+        {
+            $this->returnJson('false');
         }
     }
 }
