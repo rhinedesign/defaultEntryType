@@ -54,11 +54,12 @@ function selectType(response){
 	if(parseInt(currentEntryTypeID) != parseInt(response)){
 		entryTypeField.find("option:selected").removeAttr("selected");
 		entryTypeField.find('[value="'+response+'"]').attr('selected', 'selected');
-		entryTypeField.find("option:not(:selected)").remove();
+		
 		if(!pageId){pageId=""}
 		Craft.postActionRequest('entries/switchEntryType', $('#entry-form').serialize(), function(response){
 			$('#fields').html(response.paneHtml);
 			$(document.body).append(response.footHtml);
 		});
 	}
+	entryTypeField.find("option:not(:selected)").remove();
 }

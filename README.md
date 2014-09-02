@@ -1,4 +1,5 @@
 Default Entry Types is a simple plugin for Craft CMS that forces entry types on certain levels of their structure.
+It may not be bug free, but works great for what I needed for my clients.
 
 To install, clone the repo in your craft plugins directory.
 
@@ -15,4 +16,4 @@ __Future / Todo:__
 - Don't show an entrytype on an unrestricted level if it has been assigned to another
 - Maybe allow multiple entrytype selections per level?
 
-*Tested on Craft 2.1.2570*
+*Tested on Craft 2.1.2570 and 2.2*
