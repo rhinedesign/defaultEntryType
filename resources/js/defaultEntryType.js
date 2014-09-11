@@ -52,10 +52,7 @@ function(buttonSelector)
     });
 };
 
-//populate input
-
-
-//attach handler for unique section numbers
+//attach handler for unique section numbers per section
 $('#entrytypeorder .numeric').EntryOrderControl('#entryOrderSubmit');
 
 //attach handler for submitting to controller
