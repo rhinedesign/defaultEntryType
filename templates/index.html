@@ -13,7 +13,7 @@
 {% set sections = craft.sections.getAllSections() %}
 <div id="entrytypeorder">
 {% for section in sections %}
-{% if section.maxLevels %}
+{% if section.type == "structure" %}
 	<div class="item" data-id="{{ section.id }}" style="margin-bottom: 2.5em;">
 		<strong style="margin-bottom: 10px; display: block">{{ section }}</strong>
 		{% set entryTypes = section.getEntryTypes() %}
