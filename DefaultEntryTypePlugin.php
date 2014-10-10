@@ -65,7 +65,7 @@ class DefaultEntryTypePlugin extends BasePlugin
         $segs = craft()->request->getSegments();
         if($segs && $segs[0] == "entries" && count($segs) == 3 )
         {
-            craft()->templates->includeJsResource('defaultEntryType/js/defaultEntryTypeCP.js');
+            craft()->templates->includeJsResource('/defaultEntryType/js/defaultEntryTypeCP.js');
         }
     }
 }
